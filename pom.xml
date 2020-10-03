@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>sample.artifact.synchronizer</groupId>
+    <artifactId>synchronizer.github</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <name>GitHubArtifactSynchronizer</name>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <carbon.apimgt.version>6.7.206</carbon.apimgt.version>
+        <json.simple.version>1.1</json.simple.version>
+        <gson.version>2.1</gson.version>
+        <feign.version>11.0</feign.version>
+    </properties>
+
+    <modules>
+        <module>components/synchronizer-github-core</module>
+        <module>components/synchronizer-github-saver</module>
+        <module>components/synchronizer-github-retriever</module>
+    </modules>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.wso2.maven</groupId>
+                    <artifactId>carbon-p2-plugin</artifactId>
+                    <version>${carbon.p2.plugin.version}</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.wso2.carbon.apimgt</groupId>
+                <artifactId>org.wso2.carbon.apimgt.impl</artifactId>
+                <version>${carbon.apimgt.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.googlecode.json-simple</groupId>
+                <artifactId>json-simple</artifactId>
+                <version>${json.simple.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.google.code.gson</groupId>
+                <artifactId>gson</artifactId>
+                <version>${gson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.github.openfeign</groupId>
+                <artifactId>feign-core</artifactId>
+                <version>${feign.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.github.openfeign</groupId>
+                <artifactId>feign-gson</artifactId>
+                <version>${feign.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>sample.artifact.synchronizer</groupId>
+                <artifactId>synchronizer-github-core</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>sample.artifact.synchronizer</groupId>
+                <artifactId>synchronizer-github-saver</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>sample.artifact.synchronizer</groupId>
+                <artifactId>synchronizer-github-retriever</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <repositories>
+        <repository>
+            <id>wso2-nexus</id>
+            <name>WSO2 internal Repository</name>
+            <url>http://maven.wso2.org/nexus/content/groups/wso2-public/</url>
+            <releases>
+                <enabled>true</enabled>
+                <updatePolicy>daily</updatePolicy>
+                <checksumPolicy>ignore</checksumPolicy>
+            </releases>
+        </repository>
+        <repository>
+            <id>wso2.releases</id>
+            <name>WSO2 internal Repository</name>
+            <url>http://maven.wso2.org/nexus/content/repositories/releases/</url>
+            <releases>
+                <enabled>true</enabled>
+                <updatePolicy>daily</updatePolicy>
+                <checksumPolicy>ignore</checksumPolicy>
+            </releases>
+        </repository>
+        <repository>
+            <id>wso2.snapshots</id>
+            <name>Apache Snapshot Repository</name>
+            <url>http://maven.wso2.org/nexus/content/repositories/snapshots/</url>
+            <snapshots>
+                <enabled>true</enabled>
+                <updatePolicy>daily</updatePolicy>
+            </snapshots>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
+        </repository>
+    </repositories>
+
+    <distributionManagement>
+        <repository>
+            <id>nexus-releases</id>
+            <name>WSO2 Release Distribution Repository</name>
+            <url>http://maven.wso2.org/nexus/service/local/staging/deploy/maven2/</url>
+        </repository>
+        <snapshotRepository>
+            <id>wso2.snapshots</id>
+            <name>Apache Snapshot Repository</name>
+            <url>http://maven.wso2.org/nexus/content/repositories/snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
+</project>

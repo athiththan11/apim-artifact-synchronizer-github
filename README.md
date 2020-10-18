@@ -1,7 +1,5 @@
 # APIM Gateway Artifact Synchronizer with GitHub
 
-[:construction: Dev in progress]
-
 A sample implementation of Gateway Artifact Synchronizer using GitHub APIs to store and retrieve the Gateway Runtime artifacts. Learn more about Artifact Synchronizations and support in WSO2 API Manager v3.2.0 in [here](https://apim.docs.wso2.com/en/latest/install-and-setup/setup/distributed-deployment/synchronizing-artifacts-in-a-gateway-cluster/).
 
 > Artifact Synchronizer is a new feature available in WSO2 API Manager from v3.2.0 to sync Gateway Runtime artifacts in a Gateway Cluster environment
